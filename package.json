@@ -5,6 +5,13 @@
   "type": "module",
   "description": "A local-first daily study planner, syllabus tracker and resource library for exam programs.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdsSh/studyflow-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AdsSh/studyflow-app/issues"
+  },
   "engines": {
     "node": ">=20"
   },
