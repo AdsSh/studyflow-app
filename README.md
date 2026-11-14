@@ -1,6 +1,10 @@
 # StudyFlow — Daily Study Tracker
 
+[![build](https://github.com/AdsSh/studyflow-app/actions/workflows/build.yml/badge.svg)](https://github.com/AdsSh/studyflow-app/actions/workflows/build.yml)
+
 A focused, single-file study planner and resource library for exam programs. It ships with three ICAZ 2026 Foundation programs — **Management Accounting**, **Corporate & Business Law** and **Financial Accounting** — and you can add any other course, module or qualification as its own program. Each study day becomes a small set of scheduled topics, each with its own checklist, so progress is measured step by step rather than guessed.
+
+**Live app:** https://studyflow-app-8r1.pages.dev · **Single file:** [`StudyFlow.html`](StudyFlow.html)
 
 **Open `StudyFlow.html` in any modern browser.** No install, build step, or server is needed for normal use.
 

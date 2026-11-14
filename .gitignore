@@ -14,6 +14,7 @@ ref-extract/
 .env.*
 .dev.vars
 *.log
+.wrangler/
 
 # OS files
 .DS_Store
