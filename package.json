@@ -1,0 +1,16 @@
+{
+  "name": "studyflow",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A local-first daily study planner, syllabus tracker and resource library for exam programs.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "check": "node --check src/data.js && node --check src/render.js && node --check src/app.js",
+    "test": "node tools/test.mjs",
+    "build": "npm run check && node build.mjs && node scripts/package.mjs"
+  }
+}

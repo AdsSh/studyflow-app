@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FFFFFF">
+<title>StudyFlow — Daily Study Tracker</title>
+<meta name="description" content="A focused daily study planner, syllabus tracker and resource library for exam programs.">
+<meta name="robots" content="index,follow">
+<meta name="application-name" content="StudyFlow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="StudyFlow">
+<meta property="og:title" content="StudyFlow — Daily Study Tracker">
+<meta property="og:description" content="A focused daily study planner, syllabus tracker and resource library for exam programs.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="StudyFlow — Daily Study Tracker">
+<meta name="twitter:description" content="A focused daily study planner, syllabus tracker and resource library for exam programs.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0B'/%3E%3Cpath d='M36 7 16 35h12L28 57l20-28H36z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="views.css">
+</head>
+<body>
+<a class="skip-link" href="#view">Skip to content</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.4 2.2 4.8 13.4h5.4L9.9 21.8l8.7-11.5h-5.5z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+  <symbol id="i-calendar-check" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18M8.5 15.5l2.2 2.2 4.3-4.4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5v4.2l2.6 1.6M9.5 2.5h5M12 2.5v3"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 2.5c.6 3.4 3.1 4.7 4.6 7a7 7 0 0 1-9.4 9.9A7.2 7.2 0 0 1 12 2.5Z" fill="currentColor" stroke="none"/><path d="M12 21a3.6 3.6 0 0 1-3.6-3.6c0-2 1.5-3 2.4-4.5.3 1.6 1.6 2 2.4 3.2a4.7 4.7 0 0 1-1.2 4.9Z" fill="#fff" stroke="none" opacity=".9"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3.5 3.5v17h17"/><path d="M7.5 16.5v2.5M12 12.5v6.5M16.5 8.5v10.5M21 6v13" opacity=".35"/><path d="M7 13.5 11 9l3.2 3.2L20 6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2.5 3.5h6a4 4 0 0 1 4 4v14a3.2 3.2 0 0 0-3.2-3.2H2.5z"/><path d="M21.5 3.5h-6a4 4 0 0 0-4 4v14a3.2 3.2 0 0 1 3.2-3.2h6.8z"/></symbol>
+  <symbol id="i-library" viewBox="0 0 24 24"><path d="M3.5 4.5h3.2v16H3.5zM9 3h3.2v17.5H9zM14.5 6h3.2v14.5h-3.2zM20 8.5h1.5v12H20z"/><path d="M2 20.5h20" opacity=".45"/></symbol>
+  <symbol id="i-file-text" viewBox="0 0 24 24"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5M8.5 12h7M8.5 16h7M8.5 8h2.5"/></symbol>
+  <symbol id="i-file-check" viewBox="0 0 24 24"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5M8.5 14.5l2.2 2.2 4.3-4.4"/></symbol>
+  <symbol id="i-function" viewBox="0 0 24 24"><path d="M15.5 3.5h-2a3 3 0 0 0-3 3v11a3 3 0 0 1-3 3h-2M7.5 11.5h7"/></symbol>
+  <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13.5" width="4.5" height="7" rx="2"/><rect x="17" y="13.5" width="4.5" height="7" rx="2"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5.5-5 4.5 4 2.5-2.5 3.5 3.5"/></symbol>
+  <symbol id="i-paperclip" viewBox="0 0 24 24"><path d="m20.5 11.5-8.1 8.1a5 5 0 0 1-7.1-7.1l8.3-8.3a3.3 3.3 0 0 1 4.7 4.7l-8.3 8.3a1.7 1.7 0 0 1-2.4-2.4l7.6-7.6"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13.5a4.5 4.5 0 0 0 6.4.2l2.3-2.3a4.5 4.5 0 0 0-6.4-6.4L11 6.4"/><path d="M14 10.5a4.5 4.5 0 0 0-6.4-.2l-2.3 2.3a4.5 4.5 0 0 0 6.4 6.4l1.3-1.3"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 14.6a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5v.2a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H2a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H8a1.7 1.7 0 0 0 1-1.5V2a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V8a1.7 1.7 0 0 0 1.5 1H22a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4.5 12h15M13 5.5l6.5 6.5-6.5 6.5"/></symbol>
+  <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 8l5-5 5 5M12 3v12"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3.5 6.5h17M18.5 6.5V20a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2V6.5M8.5 6.5V4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2.5M10 11v6M14 11v6"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5 20 12 7 19.5z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8.5 5v14M15.5 5v14" stroke-width="2.4"/></symbol>
+  <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.7-6.4L3 8.5"/><path d="M3 3.5v5h5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-sunrise" viewBox="0 0 24 24"><path d="M3 18h18M12 3.5v4M5.6 8.6l1.8 1.8M18.4 8.6l-1.8 1.8M8 18a4 4 0 0 1 8 0"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></symbol>
+  <symbol id="i-sunset" viewBox="0 0 24 24"><path d="M3 18h18M12 7.5v-4M5.6 12.4l1.8-1.8M18.4 12.4l-1.8-1.8M8 18a4 4 0 0 1 8 0"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.8 13.2A8.6 8.6 0 1 1 10.8 3a7 7 0 0 0 10 10.2Z"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m12 2.5 2 5.8 5.8 2-5.8 2-2 5.8-2-5.8-5.8-2 5.8-2z"/><path d="M19 16.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" opacity=".5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3.5 6.5h17M3.5 12h17M3.5 17.5h17"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.2 2.7 2.7 5.4-5.6"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.1"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2.5 9 5-9 5-9-5z"/><path d="m3 12.5 9 5 9-5M3 17.5l9 5 9-5"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 21V3.5M4 4.5h13.5l-2.5 4 2.5 4H4"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3.5h12a1 1 0 0 1 1 1v17l-7-4-7 4v-17a1 1 0 0 1 1-1z"/></symbol>
+</svg>
+
+<div class="rail-scrim" id="railScrim" hidden></div>
+
+<div class="app" id="app">
+  <aside class="rail" id="rail" aria-label="StudyFlow navigation">
+    <div class="rail-scroll">
+      <a class="brand" href="#plan" aria-label="StudyFlow — go to daily plan">
+        <span class="brand-mark" aria-hidden="true"><svg class="icon"><use href="#i-bolt"></use></svg></span>
+        <span class="brand-text">StudyFlow<span>Academic OS</span></span>
+      </a>
+
+      <button class="program" type="button" data-action="open-programs" aria-label="Switch or add a study program">
+        <span class="eyebrow">Enrolled program</span>
+        <span class="program-row">
+          <span class="program-name" id="programName">ICAZ 2026 · Foundation</span>
+          <svg class="icon icon-sm"><use href="#i-chevron-down"></use></svg>
+        </span>
+        <span class="program-sub" id="programSub">Management Accounting</span>
+      </button>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="#plan" data-nav="plan">
+          <svg class="icon"><use href="#i-calendar-check"></use></svg>
+          <span>Daily plan</span>
+          <span class="nav-count" id="navCount">0</span>
+        </a>
+        <a class="nav-link" href="#syllabus" data-nav="syllabus">
+          <svg class="icon"><use href="#i-book"></use></svg>
+          <span>Syllabus</span>
+        </a>
+        <a class="nav-link" href="#library" data-nav="library">
+          <svg class="icon"><use href="#i-library"></use></svg>
+          <span>Library</span>
+          <span class="nav-count" id="libraryCount">0</span>
+        </a>
+        <a class="nav-link" href="#analytics" data-nav="analytics">
+          <svg class="icon"><use href="#i-chart"></use></svg>
+          <span>Analytics</span>
+        </a>
+      </nav>
+
+      <div class="rail-note">
+        <svg class="icon"><use href="#i-sparkle"></use></svg>
+        <p>Plan the topic, break it into steps, and let the checklist carry the streak.</p>
+      </div>
+    </div>
+
+    <div class="rail-foot">
+      <div class="focus-mini">
+        <div class="focus-mini-head">
+          <span class="eyebrow">Today's focus</span>
+          <strong id="railFocusValue">0h 00m</strong>
+        </div>
+        <div class="bar"><i id="railFocusBar" style="width:0%"></i></div>
+        <div class="focus-mini-foot">
+          <span id="railSteps">0 of 0 steps</span>
+          <span id="railGoal">Goal 3.5h</span>
+        </div>
+      </div>
+
+      <div class="streak-card">
+        <div class="streak-top">
+          <span class="streak-flame"><svg class="icon"><use href="#i-flame"></use></svg></span>
+          <span class="streak-copy">
+            <strong id="railStreak">0 day streak</strong>
+            <span>Keep the chain alive</span>
+          </span>
+        </div>
+        <div class="streak-week" id="railStreakWeek" aria-hidden="true"></div>
+      </div>
+
+      <button class="profile" type="button" data-action="open-settings">
+        <span class="avatar" id="profileAvatar">TA</span>
+        <span class="profile-copy">
+          <span class="profile-name" id="profileName">Tadiwa A.</span>
+          <span class="profile-sub" id="profileSub">ICAZ Foundation</span>
+        </span>
+        <svg class="icon icon-sm"><use href="#i-settings"></use></svg>
+      </button>
+    </div>
+  </aside>
+
+  <div class="shell">
+    <header class="topbar">
+      <button class="icon-btn rail-toggle" type="button" data-action="toggle-rail" aria-label="Open navigation" aria-expanded="false">
+        <svg class="icon"><use href="#i-menu"></use></svg>
+      </button>
+      <a class="topbar-brand" href="#plan" aria-label="StudyFlow home">
+        <span class="brand-mark" aria-hidden="true"><svg class="icon"><use href="#i-bolt"></use></svg></span>
+        <span class="topbar-brand-text">StudyFlow</span>
+      </a>
+
+      <div class="search" role="search">
+        <svg class="icon search-icon"><use href="#i-search"></use></svg>
+        <input id="search" type="search" placeholder="Search topics, chapters, steps…" autocomplete="off" spellcheck="false" aria-label="Search study topics and chapters">
+        <kbd class="search-kbd">Ctrl K</kbd>
+        <button class="search-clear" type="button" data-action="clear-search" aria-label="Clear search" hidden>
+          <svg class="icon icon-sm"><use href="#i-x"></use></svg>
+        </button>
+      </div>
+
+      <div class="topbar-right">
+        <span class="exam-chip" title="Days until the exam">
+          <svg class="icon icon-sm"><use href="#i-flag"></use></svg>
+          <span id="topExamDays">— days</span>
+        </span>
+        <span class="streak-pill" title="Current study streak">
+          <svg class="icon icon-sm"><use href="#i-flame"></use></svg>
+          <span id="topStreak">0</span>
+        </span>
+        <button class="timer-chip" id="topTimer" type="button" data-action="jump-timer" aria-label="Return to the focus timer" hidden>
+          <svg class="icon icon-sm"><use href="#i-timer"></use></svg>
+          <span id="topTimerDigits">25:00</span>
+        </button>
+        <button class="icon-btn" type="button" data-action="open-settings" aria-label="Settings">
+          <svg class="icon"><use href="#i-settings"></use></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="site-alert is-danger" id="saveAlert" role="alert" hidden>
+      <svg class="icon icon-sm" aria-hidden="true"><use href="#i-info"></use></svg>
+      <p id="saveAlertMsg">Changes are not being saved in this browser. Export a backup before you close this tab.</p>
+      <button type="button" class="btn btn-outline btn-sm" data-action="export-json">Export backup</button>
+      <button type="button" class="icon-btn" data-action="dismiss-save-alert" aria-label="Dismiss save warning">
+        <svg class="icon icon-sm"><use href="#i-x"></use></svg>
+      </button>
+    </div>
+
+    <div class="site-alert is-danger" id="recoveryAlert" role="alert" hidden>
+      <svg class="icon icon-sm" aria-hidden="true"><use href="#i-info"></use></svg>
+      <p>Your saved plan could not be read. A copy has been kept so you can recover it.</p>
+      <button type="button" class="btn btn-outline btn-sm" data-action="download-recovery">Download copy</button>
+      <button type="button" class="icon-btn" data-action="dismiss-recovery-alert" aria-label="Dismiss recovery notice">
+        <svg class="icon icon-sm"><use href="#i-x"></use></svg>
+      </button>
+    </div>
+
+    <div class="site-alert is-info" id="syncAlert" role="status" hidden>
+      <svg class="icon icon-sm" aria-hidden="true"><use href="#i-info"></use></svg>
+      <p>This plan was updated in another tab. Reload to work from the latest version.</p>
+      <button type="button" class="btn btn-outline btn-sm" data-action="reload-app">Reload</button>
+      <button type="button" class="icon-btn" data-action="dismiss-sync-alert" aria-label="Dismiss tab notice">
+        <svg class="icon icon-sm"><use href="#i-x"></use></svg>
+      </button>
+    </div>
+
+    <main class="view" id="view" tabindex="-1">
+      <div class="view-inner" id="viewInner"></div>
+    </main>
+  </div>
+</div>
+
+<nav class="tabbar" aria-label="Mobile navigation">
+  <a href="#plan" class="tab" data-tab="plan">
+    <svg class="icon"><use href="#i-calendar-check"></use></svg><span>Plan</span>
+  </a>
+  <a href="#syllabus" class="tab" data-tab="syllabus">
+    <svg class="icon"><use href="#i-book"></use></svg><span>Syllabus</span>
+  </a>
+  <a href="#library" class="tab" data-tab="library">
+    <svg class="icon"><use href="#i-library"></use></svg><span>Library</span>
+  </a>
+  <a href="#analytics" class="tab" data-tab="analytics">
+    <svg class="icon"><use href="#i-chart"></use></svg><span>Analytics</span>
+  </a>
+  <button type="button" class="tab" data-action="open-settings">
+    <svg class="icon"><use href="#i-settings"></use></svg><span>Settings</span>
+  </button>
+</nav>
+
+<div class="popmenu" id="taskMenu" role="menu" hidden></div>
+
+<div class="overlay" id="sessionOverlay" hidden>
+  <div class="modal modal-session" role="dialog" aria-modal="true" aria-labelledby="sessionHeading">
+    <header class="modal-head">
+      <div>
+        <p class="eyebrow" id="sessionEyebrow">Plan a session</p>
+        <h2 id="sessionHeading">Schedule a study session</h2>
+      </div>
+      <button class="icon-btn" type="button" data-action="close-modal" aria-label="Close dialog">
+        <svg class="icon"><use href="#i-x"></use></svg>
+      </button>
+    </header>
+
+    <form id="sessionForm" novalidate>
+      <div class="form-grid">
+        <label class="field span-2">
+          <span>Chapter</span>
+          <select id="fChapter" required></select>
+        </label>
+        <label class="field">
+          <span>Date</span>
+          <input type="date" id="fDate" required>
+        </label>
+        <label class="field">
+          <span>Priority</span>
+          <select id="fPriority">
+            <option value="core">Core study</option>
+            <option value="practice">Practice</option>
+            <option value="review">Review</option>
+          </select>
+        </label>
+        <label class="field span-2">
+          <span>Repeat</span>
+          <select id="fRepeat">
+            <option value="once">Does not repeat</option>
+            <option value="daily">Daily · next 5 days</option>
+            <option value="weekdays">Weekdays · next 2 weeks</option>
+            <option value="weekly">Weekly · next 4 weeks</option>
+          </select>
+          <small class="repeat-hint" id="repeatHint">Creates 1 session on this day.</small>
+        </label>
+        <label class="field span-2">
+          <span>Topic</span>
+          <input type="text" id="fTitle" maxlength="96" placeholder="e.g. High-low method and regression" required>
+        </label>
+        <label class="field">
+          <span>Starts</span>
+          <input type="time" id="fStart" required>
+        </label>
+        <label class="field">
+          <span>Ends</span>
+          <input type="time" id="fEnd" required>
+        </label>
+      </div>
+
+      <div class="field">
+        <div class="field-label-row">
+          <span>Checklist <em>· one deliverable per line</em></span>
+          <span class="field-count" id="stepCount">0 steps</span>
+        </div>
+        <textarea id="fSteps" rows="4" placeholder="e.g. Read section 5.2 · Work through the example · Practice questions"></textarea>
+        <div class="field-actions">
+          <button type="button" class="link" data-action="suggest-steps">
+            <svg class="icon icon-sm"><use href="#i-sparkle"></use></svg>
+            Use chapter topics
+          </button>
+          <span class="field-hint">One deliverable per line — steps drive your progress.</span>
+        </div>
+      </div>
+
+      <label class="field">
+        <span>Note <em>· optional</em></span>
+        <input type="text" id="fNote" maxlength="140" placeholder="Formula reminder, page reference, focus cue…">
+      </label>
+
+      <p class="form-error" id="formError" role="alert" hidden></p>
+
+      <div class="modal-foot">
+        <button type="button" class="btn btn-quiet" data-action="close-modal">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="sessionSubmit">
+          <svg class="icon icon-sm"><use href="#i-plus"></use></svg>
+          <span>Schedule session</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" id="chapterOverlay" hidden>
+  <div class="modal modal-plan" role="dialog" aria-modal="true" aria-labelledby="chapterPlanHeading">
+    <header class="modal-head">
+      <div>
+        <p class="eyebrow">Bulk plan</p>
+        <h2 id="chapterPlanHeading">Plan a chapter</h2>
+      </div>
+      <button class="icon-btn" type="button" data-action="close-modal" aria-label="Close dialog">
+        <svg class="icon"><use href="#i-x"></use></svg>
+      </button>
+    </header>
+
+    <form id="chapterForm" novalidate>
+      <div class="form-grid">
+        <label class="field span-2">
+          <span>Chapter</span>
+          <select id="pChapter" required></select>
+        </label>
+        <label class="field">
+          <span>Start date</span>
+          <input type="date" id="pDate" required>
+        </label>
+        <label class="field">
+          <span>Sessions</span>
+          <select id="pSessions"></select>
+        </label>
+        <label class="field">
+          <span>Daily start</span>
+          <input type="time" id="pStart" required>
+        </label>
+        <label class="field">
+          <span>Minutes each</span>
+          <select id="pLength">
+            <option value="60">60 minutes</option>
+            <option value="90" selected>90 minutes</option>
+            <option value="120">120 minutes</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="plan-preview">
+        <div class="field-label-row">
+          <span>Preview</span>
+          <span class="field-count" id="pSummary">3 sessions</span>
+        </div>
+        <div class="plan-preview-list" id="pPreview"></div>
+      </div>
+
+      <p class="form-error" id="pError" role="alert" hidden></p>
+
+      <div class="modal-foot">
+        <button type="button" class="btn btn-quiet" data-action="close-modal">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="pSubmit">
+          <svg class="icon icon-sm"><use href="#i-calendar"></use></svg>
+          <span>Plan sessions</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" id="settingsOverlay" hidden>
+  <div class="modal modal-settings" role="dialog" aria-modal="true" aria-labelledby="settingsHeading">
+    <header class="modal-head">
+      <div>
+        <p class="eyebrow">Preferences</p>
+        <h2 id="settingsHeading">Study settings</h2>
+      </div>
+      <button class="icon-btn" type="button" data-action="close-modal" aria-label="Close dialog">
+        <svg class="icon"><use href="#i-x"></use></svg>
+      </button>
+    </header>
+
+    <form id="settingsForm">
+      <section class="settings-section">
+        <h3>Program</h3>
+        <div class="form-grid">
+          <label class="field">
+            <span>Student name</span>
+            <input type="text" id="sName" maxlength="40" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>Program label</span>
+            <input type="text" id="sProgram" maxlength="48" autocomplete="off">
+          </label>
+          <label class="field span-2">
+            <span>Course</span>
+            <input type="text" id="sCourse" maxlength="60" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>Exam label</span>
+            <input type="text" id="sExamLabel" maxlength="40" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>Exam date</span>
+            <input type="date" id="sExamDate" required>
+          </label>
+          <label class="field">
+            <span>Daily focus target</span>
+            <div class="input-suffix">
+              <input type="number" id="sTarget" min="0.5" max="12" step="0.5" inputmode="decimal">
+              <span>hours</span>
+            </div>
+          </label>
+        </div>
+        <div class="settings-program-actions">
+          <button type="button" class="btn btn-outline" data-action="open-programs">Manage programs</button>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h3>Keyboard</h3>
+        <ul class="shortcut-list">
+          <li><kbd>N</kbd><span>New study session</span></li>
+          <li><kbd>Ctrl</kbd><kbd>K</kbd><span>Search the syllabus</span></li>
+          <li><kbd>Esc</kbd><span>Close panels and dialogs</span></li>
+        </ul>
+      </section>
+
+      <section class="settings-section">
+        <h3>Your data</h3>
+        <p class="settings-note">Everything is stored locally in this browser. Attached library files use this browser's file storage; backups keep their details, not the file contents. Export a backup before clearing your device.</p>
+        <div class="data-actions">
+          <button type="button" class="btn btn-outline" data-action="export-json">
+            <svg class="icon icon-sm"><use href="#i-download"></use></svg> Export backup
+          </button>
+          <button type="button" class="btn btn-outline" data-action="import-json">
+            <svg class="icon icon-sm"><use href="#i-upload"></use></svg> Import backup
+          </button>
+          <input type="file" id="importFile" accept="application/json,.json" hidden>
+          <button type="button" class="btn btn-outline" data-action="load-sample">Reload sample plan</button>
+          <button type="button" class="btn btn-danger" data-action="reset-data">Reset all data</button>
+        </div>
+      </section>
+
+      <div class="modal-foot">
+        <span class="autosave-note">
+          <svg class="icon icon-sm"><use href="#i-check-circle"></use></svg>
+          Saved automatically on this device
+        </span>
+        <button type="submit" class="btn btn-primary">Save settings</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" id="programsOverlay" hidden>
+  <div class="modal modal-programs" role="dialog" aria-modal="true" aria-labelledby="programsHeading">
+    <header class="modal-head">
+      <div>
+        <p class="eyebrow">Workspace</p>
+        <h2 id="programsHeading" tabindex="-1">Your programs</h2>
+      </div>
+      <button class="icon-btn" type="button" data-action="close-modal" aria-label="Close dialog">
+        <svg class="icon"><use href="#i-x"></use></svg>
+      </button>
+    </header>
+    <div class="programs-body">
+      <p class="programs-note">Each program keeps its own timetable, syllabus, focus log and analytics.</p>
+      <div class="program-list" id="programList"></div>
+    </div>
+    <div class="modal-foot">
+      <span class="autosave-note">Switch anytime — your data stays with each program.</span>
+      <button type="button" class="btn btn-primary" data-action="new-program">
+        <svg class="icon icon-sm"><use href="#i-plus"></use></svg>
+        Add program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="programOverlay" hidden>
+  <div class="modal modal-program" role="dialog" aria-modal="true" aria-labelledby="programFormHeading">
+    <header class="modal-head">
+      <div>
+        <p class="eyebrow" id="programFormEyebrow">New program</p>
+        <h2 id="programFormHeading">Create a program</h2>
+      </div>
+      <button class="icon-btn" type="button" data-action="close-modal" aria-label="Close dialog">
+        <svg class="icon"><use href="#i-x"></use></svg>
+      </button>
+    </header>
+
+    <form id="programForm" novalidate>
+      <section class="settings-section">
+        <h3>Program details</h3>
+        <div class="form-grid">
+          <label class="field span-2">
+            <span>Program name</span>
+            <input type="text" id="prName" maxlength="60" placeholder="e.g. ICAZ 2026 · Foundation · Financial Accounting" required>
+          </label>
+          <label class="field span-2">
+            <span>Course</span>
+            <input type="text" id="prCourse" maxlength="60" placeholder="e.g. Financial Accounting" required>
+          </label>
+          <label class="field">
+            <span>Exam label</span>
+            <input type="text" id="prExamLabel" maxlength="40" placeholder="e.g. ICAZ 2026 Core">
+          </label>
+          <label class="field">
+            <span>Exam date</span>
+            <input type="date" id="prExamDate" required>
+          </label>
+          <label class="field">
+            <span>Daily focus target</span>
+            <div class="input-suffix">
+              <input type="number" id="prTarget" min="0.5" max="12" step="0.5" inputmode="decimal" value="3.5">
+              <span>hours</span>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <section class="program-curriculum">
+        <div class="program-curriculum-head">
+          <h3>Curriculum</h3>
+          <div class="program-curriculum-actions">
+            <button type="button" class="link" data-action="copy-program-structure" id="prCopy">Copy current program</button>
+            <button type="button" class="link is-quiet" data-action="clear-program-structure" id="prClear">Start blank</button>
+          </div>
+        </div>
+        <p class="settings-note">Sections group chapters by exam weighting. Separate topics with semicolons.</p>
+        <div id="prSections" class="program-sections"></div>
+        <button type="button" class="add-section-btn" data-action="add-program-section">+ Add section</button>
+      </section>
+
+      <p class="form-error" id="prError" role="alert" hidden></p>
+
+      <div class="modal-foot">
+        <button type="button" class="btn btn-danger" data-action="delete-program" id="prDelete" hidden>Delete program</button>
+        <button type="button" class="btn btn-quiet" data-action="close-modal">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="prSubmit">Create program</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" id="resourceOverlay" hidden>
+  <div class="modal modal-resource" role="dialog" aria-modal="true" aria-labelledby="resourceFormHeading">
+    <header class="modal-head">
+      <div>
+        <p class="eyebrow" id="resourceEyebrow">Library</p>
+        <h2 id="resourceFormHeading">Add resource</h2>
+      </div>
+      <button class="icon-btn" type="button" data-action="close-modal" aria-label="Close dialog">
+        <svg class="icon"><use href="#i-x"></use></svg>
+      </button>
+    </header>
+
+    <form id="resourceForm" novalidate>
+      <div class="form-grid">
+        <label class="field span-2">
+          <span>Title</span>
+          <input type="text" id="rTitle" maxlength="120" placeholder="e.g. Study text — Chapter 5" required>
+        </label>
+        <label class="field">
+          <span>Format</span>
+          <select id="rFormat">
+            <option value="document">Document</option>
+            <option value="video">Video</option>
+            <option value="audio">Audio</option>
+            <option value="image">Image</option>
+            <option value="link">Link</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Status</span>
+          <select id="rStatus">
+            <option value="to-read">To read</option>
+            <option value="reading">Reading</option>
+            <option value="done">Finished</option>
+            <option value="reference">Reference</option>
+          </select>
+        </label>
+        <label class="field span-2">
+          <span>Chapter</span>
+          <select id="rChapter"></select>
+        </label>
+        <div class="field span-2">
+          <span>Attached file <em class="field-optional">optional</em></span>
+          <button type="button" class="file-picker" id="rFilePicker" data-action="choose-file">
+            <svg class="icon icon-sm"><use href="#i-upload"></use></svg>
+            <span>Choose a file</span>
+            <em>Video, audio, image, PDF or Word — up to 250 MB</em>
+          </button>
+          <input type="file" id="rFile" accept="video/*,audio/*,image/*,.pdf,.doc,.docx,.ppt,.pptx,.txt,.rtf,.xls,.xlsx" hidden>
+          <div class="file-selected" id="rFileInfo" hidden>
+            <span class="file-selected-icon"><svg class="icon"><use href="#i-paperclip"></use></svg></span>
+            <span class="file-selected-copy"><b id="rFileName"></b><span id="rFileSize"></span></span>
+            <button type="button" class="icon-btn" data-action="clear-file" aria-label="Remove attached file">
+              <svg class="icon"><use href="#i-x"></use></svg>
+            </button>
+          </div>
+          <span class="field-hint" id="rFileHint">Files stay in this browser. You can attach a file or paste a link.</span>
+        </div>
+        <label class="field span-2">
+          <span>Link <em class="field-optional">optional</em></span>
+          <input type="text" id="rUrl" maxlength="300" placeholder="https://example.com/resource" inputmode="url" autocomplete="off">
+          <span class="field-hint" id="rLinkHint">Paste a document, video, audio or web link. Leave blank for offline material.</span>
+        </label>
+        <label class="field span-2">
+          <span>Notes</span>
+          <textarea id="rNote" rows="3" maxlength="600" placeholder="Why is this useful? What should you focus on?"></textarea>
+        </label>
+      </div>
+
+      <p class="form-error" id="rError" role="alert" hidden></p>
+
+      <div class="modal-foot">
+        <button type="button" class="btn btn-danger" data-action="delete-resource" id="rDelete" hidden>Delete</button>
+        <button type="button" class="btn btn-quiet" data-action="close-modal">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="rSubmit">Add resource</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" id="previewOverlay" hidden>
+  <div class="modal modal-preview" role="dialog" aria-modal="true" aria-labelledby="previewHeading">
+    <header class="modal-head">
+      <div>
+        <p class="eyebrow" id="previewEyebrow">Library · Document</p>
+        <h2 id="previewHeading" tabindex="-1">Resource</h2>
+      </div>
+      <button class="icon-btn" type="button" data-action="close-modal" aria-label="Close dialog">
+        <svg class="icon"><use href="#i-x"></use></svg>
+      </button>
+    </header>
+    <div class="preview-body">
+      <div class="preview-media" id="previewMedia"></div>
+      <div class="preview-info">
+        <div class="preview-meta" id="previewMeta"></div>
+        <p class="preview-notes" id="previewNotes"></p>
+      </div>
+    </div>
+    <div class="modal-foot preview-foot">
+      <button type="button" class="btn btn-quiet" data-action="edit-resource" id="previewEdit">Edit resource</button>
+      <a class="btn btn-outline" id="previewExternal" href="#" target="_blank" rel="noopener noreferrer" hidden>Open original</a>
+      <button type="button" class="btn btn-primary" data-action="close-modal">Done</button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+<div class="sr-only" id="live" aria-live="polite"></div>
+
+<noscript>
+  <div class="noscript">StudyFlow needs JavaScript enabled to plan sessions and track your checklist.</div>
+</noscript>
+
+<script>
+  /* Typography upgrade is loaded after paint so the app never blocks on the network. */
+  (function () {
+    var href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap';
+    function loadFonts() {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    }
+    if (document.readyState === 'complete') setTimeout(loadFonts, 150);
+    else window.addEventListener('load', function () { setTimeout(loadFonts, 150); }, { once: true });
+  })();
+</script>
+
+<script src="data.js"></script>
+<script src="render.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

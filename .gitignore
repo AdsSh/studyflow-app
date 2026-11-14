@@ -1,0 +1,20 @@
+# Local browser profiles from the test/verification tools
+.test-profile/
+.shots-profile/
+
+# Build output
+dist/
+node_modules/
+
+# Local reference extracts — copyrighted source material, not for the public repo
+ref-extract/
+
+# Local environment and logs
+.env
+.env.*
+.dev.vars
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
